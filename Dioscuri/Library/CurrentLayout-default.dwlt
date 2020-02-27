@@ -318,7 +318,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 57
+  controlID: 92
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Projects\Git_Test\Dioscuri
+  m_LastProjectPath: D:\Projects\Git_Dioscuri\Dioscuri
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -518,7 +518,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 39
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
