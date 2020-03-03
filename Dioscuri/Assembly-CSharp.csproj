@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\TestGitScript.cs" />
+    <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBox.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/Git_Dioscuri/Dioscuri/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
