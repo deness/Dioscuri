@@ -1,4 +1,7 @@
 ﻿
+using Assets.Components.DialogueBox.Scripts;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,39 +12,45 @@ public class DialogueBox : MonoBehaviour
     private Text _characterName;
     private Text _dialogueText;
 
+    public int TextSpeed = 5;
+    public List<string> _dialogueLines = new List<string>{
+         "This is a test that the letters show up one at a time. Currently it does not support auto paging." +
+            " Need to try some more text because right now the speed seems off. Next is paging it like auto scroll; no input.",
+        "This is the second text in the sequence. This should not need another page.",
+        "The thrid line tends to be long winded. So who know how long this could go for. Maybe it is because" +
+            " it's the big reveal of the game. Note that during this there is not response to any input other than that of" +
+            " the dialogue box. So the character can't move on the map."
+    };
+
+    private DialogueWriter _dialogueWriter;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get reference to child UI components on start up so we don't have to 
         // find them later to update. Bad practice? Acceptable? 
         //  This approach taken so it's easier to edit and see all UI parts in editor 
-        
         _backgroundPanel = transform.GetChild(0).GetComponent<Image>();
         _characterPortrait = transform.GetChild(1).GetComponent<Image>();
         _characterName = transform.GetChild(2).GetComponent<Text>();
         _dialogueText = transform.GetChild(3).GetComponent<Text>();
+
+        // Writing of Dialogue using test data. The Lines here would have actually been fetched by the CardId.
+        _dialogueWriter = new DialogueWriter(_dialogueText, _dialogueLines);
+        _dialogueWriter.SetTextSpeed(TextSpeed);
+        StartCoroutine(_dialogueWriter.TypeNextDialogue());
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Initial thought is that only a few features belong here
-        //  - scrolling of text; each frame shows a little more?
-        //  - auto page flip (next dialogue based on time not input)
-        //      May just be Timer with action/event to keep from checking delta time every frame
-        //  - 
+        // use as input check for now
+        if (Input.GetKeyUp(KeyCode.Return) && !_dialogueWriter.IsTyping) 
+        {
+            // StartCoroutine comes from MonoBehavior so cannot be used in C# class, but
+            // the function for the Coroutine can; Like here.
+            StartCoroutine(_dialogueWriter.TypeNextDialogue());
+        }
     }
 
-    private void FlipDialoguePage()
-    { 
-        // calls backing c# class to retrieve next set of dialogue to display
-    }
-
-    private void ChangeSpeakingCharacter() 
-    {
-        // Just some fake code to show potential way to update dialogue box at runtime. This should be attached to an action/event.
-        // DO NOT put in Update function!!!!! If the referenced values change here I suspect the Update function already handles re-rendering
-        var testSprite = _backgroundPanel.sprite;
-        _backgroundPanel.sprite = Sprite.Create(testSprite.texture, testSprite.rect, testSprite.pivot, testSprite.pixelsPerUnit);
-    }
 }

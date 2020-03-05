@@ -351,6 +351,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is a lot of text to represent some dialogue for a story driven game.
-    Note that this could potentially auto scroll. Each elements is relative to the
-    parent game object. Will have to see
+  m_Text: 

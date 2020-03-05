@@ -203,6 +203,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &590259440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590259442}
+  - component: {fileID: 590259441}
+  m_Layer: 0
+  m_Name: CardStacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &590259441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590259440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b27b13ce97c175498365554c7ce6248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &590259442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590259440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 283.51007, y: 154.95134, z: -109.62978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1054405923
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,12 +541,22 @@ PrefabInstance:
     - target: {fileID: 6429384769701279736, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -119.94999
+      value: -133.9
       objectReference: {fileID: 0}
     - target: {fileID: 6429384769701279736, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.500003
+      value: 26.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429384769701279736, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 157.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429384769701279736, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 140.18
       objectReference: {fileID: 0}
     - target: {fileID: 3844055244212995204, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
@@ -519,12 +572,47 @@ PrefabInstance:
     - target: {fileID: 1032744229088149773, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -119.94998
+      value: -110.64
       objectReference: {fileID: 0}
     - target: {fileID: 1032744229088149773, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -35.29
+      value: -33.145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032744229088149773, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032744229088149773, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 93.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443628840778018243, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443628840778018243, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443628840778018243, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443628840778018243, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: TextSpeed
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac52d57e4450b7b40a82fba5e929f339, type: 3}
