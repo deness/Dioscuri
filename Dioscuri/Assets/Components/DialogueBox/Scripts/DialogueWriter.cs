@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace Assets.Components.DialogueBox.Scripts
 {
+    /// <summary>
+    /// Types text for a <see cref="Text" /> Component for display within a Dialogue Box
+    /// </summary>
     public  class DialogueWriter
     {
         /// <summary>
@@ -19,11 +22,11 @@ namespace Assets.Components.DialogueBox.Scripts
         private List<string> _dialogueSequence;
         private int _currentSequenceIndex = 0;
 
+        #region Public Section
         /// <summary>
         /// Instantiate a new DialogueWriter object to write text to the screen.
         /// </summary>
-        public DialogueWriter(Text dialogueTextComponent, List<string> dialogueSequence = null)
-        {
+        public DialogueWriter(Text dialogueTextComponent, List<string> dialogueSequence = null) {
             _dialogueTextComponent = dialogueTextComponent;
             _dialogueSequence = dialogueSequence;
         }
@@ -31,47 +34,35 @@ namespace Assets.Components.DialogueBox.Scripts
         /// <summary>
         /// Loads a set of dialogue texts to display in sequence
         /// </summary>
-        public void LoadDialogueSequence(List<string> dialogueSequence)
-        {
+        public void LoadDialogueSequence(List<string> dialogueSequence) {
             _dialogueSequence = dialogueSequence;
         }
 
         /// <summary>
         /// Set desired text speed for the writer. Although not enforced recommended values are from 1-10.
         /// Values less than or equal to 0 result in slowest speed used. 
-        /// Value of -1 will provides instant text.
         /// </summary>
-        public void SetTextSpeed(int textSpeed)
-        {
-            if (textSpeed == -1) 
-            { 
-                _textDelayInSeconds = 0;
-                return;
-            }
-
+        public void SetTextSpeed(int textSpeed) {
             if (textSpeed <= 0) textSpeed = 1;
             _textDelayInSeconds = 1 / (float)(7 * textSpeed);
-
-            
         }
 
         /// <summary>
         /// A Coroutine to append the letters of a given string to the text of a <see cref="Text" /> Component.
         /// WARNING: Always ensure the DialogueWriter is not currently typing with IsTyping.
         /// </summary>
-        public IEnumerator TypeNextDialogue() 
-        {
-            IsTyping = true;
-
+        public IEnumerator TypeNextDialogue() {
+            StartTyping();
             _dialogueTextComponent.text = "";
             yield return TypeCurrentDialogue();
             _currentSequenceIndex++;
-
-            IsTyping = false;
+            EndTyping();
         }
 
-        private IEnumerator TypeCurrentDialogue() 
-        {
+        #endregion
+
+        #region Private Section
+        private IEnumerator TypeCurrentDialogue() {
             var textToType = _dialogueSequence[_currentSequenceIndex];
             var charactersToType = textToType.ToArray();
             foreach (var letter in charactersToType)
@@ -80,5 +71,15 @@ namespace Assets.Components.DialogueBox.Scripts
                 yield return new WaitForSeconds(_textDelayInSeconds);
             }
         }
+
+        private void StartTyping() {
+            IsTyping = true;
+        }
+
+        private void EndTyping() {
+            IsTyping = false;
+        }
+
+        #endregion 
     }
 }
