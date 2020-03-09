@@ -65,7 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBox.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCard.cs" />
+    <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCardRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueWriter.cs" />
+    <None Include="Assets\Components\DialogueBox\Files\ch1_grp1.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/Git_Dioscuri/Dioscuri/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

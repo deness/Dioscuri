@@ -1,0 +1,19 @@
+{
+    "DialogueCards":[
+        {
+            "CardId":"1A",
+            "CharacterId":"0",
+            "Text":"This is the first line of text."
+        },
+        {
+            "CardId":"2A",
+            "CharacterId":"1",
+            "Text":"This is the second line of text."
+        },
+        {
+            "CardId":"3A",
+            "CharacterId":"0",
+            "Text":"This is the thrid line of text"
+        }     
+    ]
+}

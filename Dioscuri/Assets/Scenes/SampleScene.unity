@@ -203,49 +203,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &590259440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 590259442}
-  - component: {fileID: 590259441}
-  m_Layer: 0
-  m_Name: CardStacks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &590259441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590259440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b27b13ce97c175498365554c7ce6248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &590259442
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590259440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 283.51007, y: 154.95134, z: -109.62978}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1054405923
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,8 +568,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
+      propertyPath: DialogueCardIds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
       propertyPath: TextSpeed
-      value: -1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: DialogueCardIds.Array.data[0]
+      value: 1A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: DialogueCardIds.Array.data[1]
+      value: 2A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: DialogueCardIds.Array.data[2]
+      value: 3A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac52d57e4450b7b40a82fba5e929f339, type: 3}
