@@ -1,47 +1,96 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.Components.DialogueBox.Scripts
 {
     public static class DialogueCardRetriever
     {
-        private const string textPath = @"D:\Projects\Git_Dioscuri\Dioscuri\Assets\Components\DialogueBox\Files\ch1_grp1.txt";
-
         #region Public Section
+
         /// <summary>
-        /// Gets specific Dialogue Card using its unique CardId
+        /// Gets a sequence of Dialogue Cards from a provided text file
         /// </summary>
-        public static DialogueCard GetDialogueCardById(string cardId) {
-            return GetDialogueCards().FirstOrDefault(card => card.DialogueCardId == cardId);
+        public static IEnumerable<DialogueCard> GetDialogueCardsBySequenceId(TextAsset textFile, string sequenceId) {
+            var sequenceLines = ParseTextFile(textFile).GoToSequence(sequenceId).TakeUntilSequenceEnd();
+            return ParseDialogueCards(sequenceLines);
         }
 
         /// <summary>
-        /// Gets all Dialogue Cards for a given character; Probably would change param to Character object later and get Id from that
-        /// so nothing else in the system needs to know about a character Id
+        /// Gets a specific Dialogue Card from provided text file
         /// </summary>
-        public static IEnumerable<DialogueCard> GetDialogueCardsByCharacterId(int characterId) {
-            return GetDialogueCards().Where(card => card.CharacterId == characterId);
+        public static DialogueCard GetDialogueCardById(TextAsset textFile, string cardId) {
+            var cardLines = ParseTextFile(textFile).GoToCard(cardId).TakeUntilCardEnd().ToList();
+            return ParseDialogueCards(cardLines).SingleOrDefault();
         }
 
+        /// <summary>
+        /// Gets a specific Dialogue Cards from provided text file
+        /// </summary>
+        public static IEnumerable<DialogueCard> GetDialogueCardsByIds(TextAsset textFile, IEnumerable<string> cardIds) {
+            var fileLines = ParseTextFile(textFile);
+            var cardLines = cardIds.SelectMany(x => fileLines.GoToCard(x).TakeUntilCardEnd());
+
+            return ParseDialogueCards(cardLines);
+        }
         #endregion
 
         #region Private Section
-        private static IEnumerable<DialogueCard> GetDialogueCards() {
-            // Currently reads all data every call, that would need to change. Discuss potential file 
-            // strategy and organization with others. Could load all required dialogue cards at once when
-            // scene loads and store in memory until scene switch?
-            var commaSeparatedLines = File.ReadAllLines(textPath).ToList();
+        private static IEnumerable<string> ParseTextFile(TextAsset textAsset) {
+            if (textAsset == null) 
+                throw new ArgumentNullException($"{nameof(DialogueCardRetriever)} cannot parse a null {nameof(TextAsset)}.");
+            if (string.IsNullOrEmpty(textAsset.text)) 
+                throw new ArgumentNullException($"{textAsset.name} is an empty text file and cannot be parsed");
 
-            return commaSeparatedLines.Select(line => {
-                var lineValues = line.Split(':');
-                return new DialogueCard
+            return textAsset.text.Split(new[] { Environment.NewLine },
+                StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private static IEnumerable<string> GoToSequence(this IEnumerable<string> fileLines, string sequenceId) {
+            return fileLines.SkipWhile(x => !x.Replace(" ", "").StartsWith("::"+sequenceId)).Skip(1);
+        }
+
+        private static IEnumerable<string> GoToCard(this IEnumerable<string> fileLines, string cardId) {
+            return fileLines.SkipWhile(x => !x.Replace(" ", "").StartsWith("--" + cardId));
+        }
+        
+        private static IEnumerable<string> TakeUntilSequenceEnd(this IEnumerable<string> fileLines) {
+            return fileLines.TakeWhile(x => !x.StartsWith("::"));
+        }
+        
+        private static IEnumerable<string> TakeUntilCardEnd(this IEnumerable<string> fileLines) {
+            return fileLines.TakeWhileIncludeFirst(x => !x.StartsWith("--") && !x.StartsWith("::"));
+        }
+
+        private static IEnumerable<string> TakeWhileIncludeFirst(this IEnumerable<string> fileLines, Func<string, bool> predicate) {
+            var firstLine = fileLines.First();
+            var takeLines = fileLines.Skip(1).TakeWhile(predicate).ToList();
+            takeLines.Insert(0, firstLine);
+            return takeLines;
+        }
+
+        // TODO: This needs split apart otherwise adding more sytax symbols for writers will become increasingly difficult.
+        public static IEnumerable<DialogueCard> ParseDialogueCards(IEnumerable<string> fileLines) {
+            var dialogueCard = new DialogueCard();
+            var dialogueCards = new List<DialogueCard>();
+
+            foreach (var line in fileLines) {
+                if (line.StartsWith("//")) continue;
+                else if (line.StartsWith("--"))
                 {
-                    DialogueCardId = lineValues[0],
-                    CharacterId = int.Parse(lineValues[1]),
-                    DialogueText = lineValues[2]
-                };
-            }).ToList();
+                    dialogueCard = new DialogueCard();
+                    var metaData = line.Split(',');
+                    dialogueCard.DialogueCardId = metaData[0].Remove(0,2);
+                    dialogueCard.CharacterId = int.Parse(metaData[1]);
+                    dialogueCard.EmotionId = int.Parse(metaData[2]);
+                    dialogueCards.Add(dialogueCard);
+
+                }
+                else dialogueCard.DialogueText = line;
+            }
+            return dialogueCards;
         }
         #endregion
     }

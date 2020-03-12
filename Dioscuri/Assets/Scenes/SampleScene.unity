@@ -573,6 +573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
         type: 3}
+      propertyPath: CardIds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
       propertyPath: TextSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -590,6 +595,41 @@ PrefabInstance:
         type: 3}
       propertyPath: DialogueCardIds.Array.data[2]
       value: 3A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: JsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: 2114e075c53499d40ab19abd8ddfd241, type: 3}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: CustomFileText
+      value: 
+      objectReference: {fileID: 4900000, guid: ff78709878c466d42a38afcc5eb8d6f2, type: 3}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: SequenceId
+      value: 1A_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: CustomTextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: ff78709878c466d42a38afcc5eb8d6f2, type: 3}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: CardIds.Array.data[0]
+      value: C1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: CardIds.Array.data[1]
+      value: C5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294835328036568190, guid: ac52d57e4450b7b40a82fba5e929f339,
+        type: 3}
+      propertyPath: CardIds.Array.data[2]
+      value: C14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac52d57e4450b7b40a82fba5e929f339, type: 3}

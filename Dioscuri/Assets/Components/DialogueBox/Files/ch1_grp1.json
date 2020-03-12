@@ -1,19 +1,44 @@
 {
-    "DialogueCards":[
-        {
-            "CardId":"1A",
-            "CharacterId":"0",
-            "Text":"This is the first line of text."
+  "Sequences": [
+    { 
+      "SequenceId": "Act_2_3A2",
+      "CardSequence": [
+        { 
+          "DialogueCardId": "1A",
+          "CharacterId": "0",
+          "DialogueText": "This is the first line of text."
+        },
+        { 
+          "DialogueCardId": "2A",
+          "CharacterId": "1",
+          "DialogueText": "This is the second line of text."
         },
         {
-            "CardId":"2A",
-            "CharacterId":"1",
-            "Text":"This is the second line of text."
+          "DialogueCardId": "3A",
+          "CharacterId": "0",
+          "DialogueText": "This is the thrid line of text"
+        }
+      ]
+    },
+    {
+      "SectionId": "Act_2_3B1",
+      "SequenceId": [
+        {
+          "DialogueCardId": "1A",
+          "CharacterId": "0",
+          "DialogueText": "This is the first line of text of section 2."
         },
         {
-            "CardId":"3A",
-            "CharacterId":"0",
-            "Text":"This is the thrid line of text"
-        }     
-    ]
+          "DialogueCardId": "2A",
+          "CharacterId": "1",
+          "DialogueText": "This is the second line of text of section 2."
+        },
+        {
+          "DialogueCardId": "3A",
+          "CharacterId": "0",
+          "DialogueText": "This is the thrid line of text of section 2."
+        }
+      ]
+    }
+  ]
 }

@@ -68,6 +68,7 @@
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCardRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueWriter.cs" />
     <None Include="Assets\Components\DialogueBox\Files\ch1_grp1.txt" />
+    <None Include="Assets\Components\DialogueBox\Files\CustomParse.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/Git_Dioscuri/Dioscuri/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -271,6 +272,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>D:/Program Files (x86)/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/Projects/Git_Dioscuri/Dioscuri/Assets/Plugins/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Program Files (x86)/2019.2.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -1,0 +1,87 @@
+// Markus(0) and Viktor(1) are in the slums of the recently invaded city. Viktor is scoping out the 
+// scene for information brokers, with Markus on high alert. Their goal is to feel out the current political 
+// landscape so that they can find and follow the flow of money. And no one talks as freely as a drunk 
+// laborer with a grudge against the man.
+
+::1A_1
+-- C1, 0, 1,
+Are you sure we can find what we need here? 
+The smell reminds me of Dalnaugh’s sewers.
+
+-- C2, 1, 1
+Yes, of course. The people have to blame someone for their problems. And whoever that is, has the money.
+
+// animation - *a pause as Viktor scans the run down bar*
+
+-- C3, 1, 1
+Hmmm… Over there. She seems to be in a rather pissed off mood. Try and stay two tables away
+
+-- C4, 0, 1
+Is that a joke? We’ll risk breaking the channel.
+
+-- C5, 1, 1
+Markus, relax, it'll be fine. Will it make you feel better if I invite myself to sit down?
+
+-- C6, 0,1
+*Sigh* Alright… 
+
+
+::1A_2
+// animation - *Markus sits down two tables away, his back facing Viktor, and the bar to the left*
+// animation - *Viktor approaches the woman*
+
+-- C1, 1, 1
+Evening Ma’am, is this seat taken?
+
+-- C2, 2, 1
+// *She looks up and leers* 
+What do you want?
+
+-- C3, 1, 1
+Im new in town, and looking to share a drink. No faster way to learn a face.
+
+-- C4, 2, 1
+Woman - No faster way to forget one either. Whatcha lookin for? You look happy, so you sure as hell ain't here for my looks. Friends don't exist in this place, so if you're not paying, get lost.
+
+-- C5, 1, 1
+Deal. Ill pay for your drink, and you tell me what's going on here.
+
+-- C6, 2, 1
+HA is that it, a nosy little shit? You don't need to pay for that. You're looking at (city), and whatever pieces the empire left behind.
+
+-- C7, 1, 1
+An aftermath.. What would the empire want with a place like this? With the leyline here, invading should be impossible.
+
+-- C8, 2, 1
+Hell if i know. Our families, our jobs, our mana. Who knows! But whatever the reason, they aint need leylines. Came blasting through our walls like paper and our livelihoods with it
+
+-- C9, 1, 1
+// animation - *Nods and leans back to think for a sec* 
+Thanks for the info. 
+// animation - *Viktor places coins on the table* 
+Here’s for the drinks
+
+-- C10, 2, 1
+Oh Honey, it’s not drinks you're paying for *She creepily smiles at Markus*
+
+// *Viktor awkwardly smiles and rushes away to Markus*
+
+-- C11, 0, 1
+Well, did you get what we needed?!
+
+-- C12, 1, 1
+Um.. yes. Let’s talk later, we gotta go!
+
+-- C13, 0, 1
+wait, I gotta pay for my drink! Can you give me what we have left?
+
+-- C14, 1, 1
+cant, spent it. 
+
+-- C15, 0, 1
+What?! (this text is quick auto)
+
+-- C16, 1, 1
+We’ll pay them back later. But we gotta go..
+
+// animation - *They rush out of the bar, with the woman staring them down with a smile.*

@@ -13,9 +13,11 @@ public class DialogueBox : MonoBehaviour
     private Text _characterName;
     private Text _dialogueText;
 
-    public int TextSpeed = 5;
-    public List<string> DialogueCardIds;
+    public string SequenceId;
+    public List<string> CardIds;
+    public TextAsset CustomTextFile;
 
+    public int TextSpeed = 5;
     private DialogueWriter _dialogueWriter;
 
     // Start is called before the first frame update
@@ -28,14 +30,20 @@ public class DialogueBox : MonoBehaviour
         _characterName = transform.GetChild(2).GetComponent<Text>();
         _dialogueText = transform.GetChild(3).GetComponent<Text>();
 
-        // Getting cards from File Reader class. Need to think more on process and will require 
-        // input from dialogue writers. Card specific? Sequence of cards per call? Do we want these set in editor?
-        var dialogueCards = DialogueCardIds.Select(cardId => DialogueCardRetriever.GetDialogueCardById(cardId));
-        var dialogueLines = dialogueCards.Select(card => card.DialogueText).ToList();
+        // TODO: Unit Test
+        var dialogueSequenceCards = DialogueCardRetriever.GetDialogueCardsBySequenceId(CustomTextFile, SequenceId);
+        var dialogueCardTest = dialogueSequenceCards.Select(x => x.DialogueText).ToList();
+
+        // TODO: Unit Test
+        var dialogueSelectedCard = DialogueCardRetriever.GetDialogueCardById(CustomTextFile, CardIds.First());
+
+        // TODO: Unit Test
+        var dialogueSelectedCards = DialogueCardRetriever.GetDialogueCardsByIds(CustomTextFile, CardIds);
+        var dialogueCardTest3 = dialogueSelectedCards.Select(x => x.DialogueText).ToList();
 
         // Writing of Dialogue using test data. The Lines here would have actually been fetched by the CardId.
         // Still debating if this should be one static writer or if we would want multiple writer objects
-        _dialogueWriter = new DialogueWriter(_dialogueText, dialogueLines);
+        _dialogueWriter = new DialogueWriter(_dialogueText, dialogueCardTest);
         _dialogueWriter.SetTextSpeed(TextSpeed);
         StartCoroutine(_dialogueWriter.TypeNextDialogue());
     }
