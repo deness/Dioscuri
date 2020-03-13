@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Components\Character\Scripts\Character.cs" />
+    <Compile Include="Assets\Components\Character\Scripts\CharacterRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBox.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCard.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCardRetriever.cs" />

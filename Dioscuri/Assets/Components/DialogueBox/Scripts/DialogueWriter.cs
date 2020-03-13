@@ -19,8 +19,6 @@ namespace Assets.Components.DialogueBox.Scripts
 
         private float _textDelayInSeconds = .05f;
         private Text _dialogueTextComponent;
-        private List<string> _dialogueSequence;
-        private int _currentSequenceIndex = 0;
 
         #region Public Section
         /// <summary>
@@ -28,14 +26,6 @@ namespace Assets.Components.DialogueBox.Scripts
         /// </summary>
         public DialogueWriter(Text dialogueTextComponent, List<string> dialogueSequence = null) {
             _dialogueTextComponent = dialogueTextComponent;
-            _dialogueSequence = dialogueSequence;
-        }
-
-        /// <summary>
-        /// Loads a set of dialogue texts to display in sequence
-        /// </summary>
-        public void LoadDialogueSequence(List<string> dialogueSequence) {
-            _dialogueSequence = dialogueSequence;
         }
 
         /// <summary>
@@ -51,19 +41,17 @@ namespace Assets.Components.DialogueBox.Scripts
         /// A Coroutine to append the letters of a given string to the text of a <see cref="Text" /> Component.
         /// WARNING: Always ensure the DialogueWriter is not currently typing with IsTyping.
         /// </summary>
-        public IEnumerator TypeNextDialogue() {
+        public IEnumerator TypeNextDialogue(string textToType) {
             StartTyping();
             _dialogueTextComponent.text = "";
-            yield return TypeCurrentDialogue();
-            _currentSequenceIndex++;
+            yield return TypeCurrentDialogue(textToType);
             EndTyping();
         }
 
         #endregion
 
         #region Private Section
-        private IEnumerator TypeCurrentDialogue() {
-            var textToType = _dialogueSequence[_currentSequenceIndex];
+        private IEnumerator TypeCurrentDialogue(string textToType) {
             var charactersToType = textToType.ToArray();
             foreach (var letter in charactersToType)
             {
