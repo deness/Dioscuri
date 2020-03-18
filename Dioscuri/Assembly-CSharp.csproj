@@ -66,9 +66,11 @@
     <Compile Include="Assets\Components\Character\Scripts\Character.cs" />
     <Compile Include="Assets\Components\Character\Scripts\CharacterRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBox.cs" />
+    <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBoxUI.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCard.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCardRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueWriter.cs" />
+    <Compile Include="Assets\Extensions\Exceptions\RequiredComponentException.cs" />
     <None Include="Assets\Components\DialogueBox\Files\ch1_grp1.txt" />
     <None Include="Assets\Components\DialogueBox\Files\CustomParse.txt" />
     <Reference Include="Unity.Timeline.Editor">

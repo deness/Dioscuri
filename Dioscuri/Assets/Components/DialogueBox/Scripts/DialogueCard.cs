@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace Assets.Components.DialogueBox.Scripts
 {
     public class DialogueCard
