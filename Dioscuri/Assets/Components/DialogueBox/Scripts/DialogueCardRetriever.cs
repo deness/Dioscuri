@@ -82,9 +82,9 @@ namespace Assets.Components.DialogueBox.Scripts
                 {
                     dialogueCard = new DialogueCard();
                     var metaData = line.Split(',');
-                    dialogueCard.DialogueCardId = metaData[0].Remove(0,2);
-                    dialogueCard.CharacterId = int.Parse(metaData[1]);
-                    dialogueCard.EmotionId = int.Parse(metaData[2]);
+                    //dialogueCard.DialogueCardId = metaData[0].Remove(0,2);
+                    //dialogueCard.CharacterId = int.Parse(metaData[1]);
+                    //dialogueCard.EmotionId = int.Parse(metaData[2]);
                     dialogueCards.Add(dialogueCard);
 
                 }

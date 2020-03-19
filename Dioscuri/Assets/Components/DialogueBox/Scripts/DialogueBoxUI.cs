@@ -1,9 +1,11 @@
 ﻿using Assets.Components.DialogueBox.Scripts;
-using Assets.Extensions.Exceptions;
-using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(Text))]
 public class DialogueBoxUI : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -22,17 +24,17 @@ public class DialogueBoxUI : MonoBehaviour
     void Start()
     {
         // Ensure that component has UI fields set within Editor
-        Validate.RequiredComponentField(_characterPortrait, nameof(_characterPortrait), nameof(DialogueBoxUI));
-        Validate.RequiredComponentField(_characterNameLabel, nameof(_characterNameLabel), nameof(DialogueBoxUI));
-        Validate.RequiredComponentField(_dialogueText, nameof(_dialogueText), nameof(DialogueBoxUI));
+        Assert.IsNotNull(_characterPortrait);
+        Assert.IsNotNull(_characterNameLabel);
+        Assert.IsNotNull(_dialogueText);
 
-        DialogueBox.OnPrintDialogue += HandlesPrintDialogue;
+        DialogueBoxNotifier.OnConfirmNextDialogue += HandlesPrintDialogue;
         DialogueWriter.SetTextSpeed(TextSpeed);
     }
     
-    private void HandlesPrintDialogue(string dialogueText, string characterName, Sprite characterPortrait) {
-        if(characterPortrait != null) _characterPortrait.sprite = characterPortrait;
-        _characterNameLabel.text = characterName;
-        StartCoroutine(DialogueWriter.TypeDialogue(dialogueText, _dialogueText));
+    private void HandlesPrintDialogue(DialogueCard dialogueCard) {
+        _characterPortrait.sprite = dialogueCard.CharacterPortrait;
+        _characterNameLabel.text = dialogueCard.CharacterName;
+        StartCoroutine(DialogueWriter.TypeDialogue(dialogueCard.DialogueText, _dialogueText));
     }
 }
