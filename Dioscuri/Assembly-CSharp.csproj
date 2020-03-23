@@ -63,13 +63,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Components\Controllers\Scripts\DialogueController.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBoxNotifier.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueBoxUI.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCard.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueCardRetriever.cs" />
     <Compile Include="Assets\Components\DialogueBox\Scripts\DialogueWriter.cs" />
-    <Compile Include="Assets\DialogueHolder.cs" />
+    <Compile Include="Assets\Components\Shared\Scripts\ChangeScene.cs" />
+    <Compile Include="Assets\Controllers\Scripts\DialogueController.cs" />
+    <Compile Include="Assets\Controllers\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\DialogueContainer.cs" />
     <Compile Include="Assets\Interfaces\IDialogueItem.cs" />
     <None Include="Assets\Components\DialogueBox\Files\ch1_grp1.txt" />
     <None Include="Assets\Components\DialogueBox\Files\CustomParse.txt" />

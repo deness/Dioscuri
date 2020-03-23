@@ -8,6 +8,7 @@ namespace Assets.Components.DialogueBox.Scripts
 {
     public static class DialogueCardRetriever
     {
+        private static int CardTextLimit = 70;
         #region Public Section
 
         /// <summary>
@@ -71,6 +72,22 @@ namespace Assets.Components.DialogueBox.Scripts
             return takeLines;
         }
 
+        private static IEnumerable<DialogueCard> SplitDialogueCard(this DialogueCard dialogueCardToSplit) {
+            var dialogueText = dialogueCardToSplit.DialogueText;
+            var splitCards = new List<DialogueCard>();
+            
+            // TODO: Can this be converted to a yield return?
+            for (var i = 0; i < dialogueText.Length; i += CardTextLimit) {
+                var clonedCard = new DialogueCard {
+                    CharacterPortrait = dialogueCardToSplit.CharacterPortrait,
+                    CharacterName = dialogueCardToSplit.CharacterName,
+                    DialogueText = dialogueText.Substring(i, Math.Min(CardTextLimit, dialogueText.Length - i))
+                };
+                splitCards.Add(clonedCard);
+            }
+            return splitCards;
+        }
+
         // TODO: This needs split apart otherwise adding more sytax symbols for writers will become increasingly difficult.
         public static IEnumerable<DialogueCard> ParseDialogueCards(IEnumerable<string> fileLines) {
             var dialogueCard = new DialogueCard();
@@ -80,13 +97,20 @@ namespace Assets.Components.DialogueBox.Scripts
                 if (line.StartsWith("//")) continue;
                 else if (line.StartsWith("--"))
                 {
+                    if (!string.IsNullOrEmpty(dialogueCard.DialogueText) && dialogueCard.DialogueText.Length > 20)
+                    {
+                        var splitCards = dialogueCard.SplitDialogueCard();
+                        dialogueCards.AddRange(splitCards);
+                    }
+                    else
+                        dialogueCards.Add(dialogueCard);
+
                     dialogueCard = new DialogueCard();
                     var metaData = line.Split(',');
+                    // TODO: Fetch approriate objects by Ids parsed from text
                     //dialogueCard.DialogueCardId = metaData[0].Remove(0,2);
                     //dialogueCard.CharacterId = int.Parse(metaData[1]);
                     //dialogueCard.EmotionId = int.Parse(metaData[2]);
-                    dialogueCards.Add(dialogueCard);
-
                 }
                 else dialogueCard.DialogueText = line;
             }
