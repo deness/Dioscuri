@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-[RequireComponent(typeof(Text))]
-[RequireComponent(typeof(Text))]
 public class DialogueBoxUI : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -23,12 +20,16 @@ public class DialogueBoxUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HandlesCloseDialogueBox();
+
         // Ensure that component has UI fields set within Editor
         Assert.IsNotNull(_characterPortrait);
         Assert.IsNotNull(_characterNameLabel);
         Assert.IsNotNull(_dialogueText);
 
         DialogueBoxNotifier.OnConfirmNextDialogue += HandlesPrintDialogue;
+        DialogueBoxNotifier.OnOpenDialoguBox += HandlesOpenDialogueBox;
+        DialogueBoxNotifier.OnCloseDialogueBox += HandlesCloseDialogueBox;
         DialogueWriter.SetTextSpeed(TextSpeed);
     }
     
@@ -36,5 +37,12 @@ public class DialogueBoxUI : MonoBehaviour
         _characterPortrait.sprite = dialogueCard.CharacterPortrait;
         _characterNameLabel.text = dialogueCard.CharacterName;
         StartCoroutine(DialogueWriter.TypeDialogue(dialogueCard.DialogueText, _dialogueText));
+    }
+    private void HandlesCloseDialogueBox() {
+        gameObject.SetActive(false);
+    }
+
+    private void HandlesOpenDialogueBox() {
+        gameObject.SetActive(true);
     }
 }

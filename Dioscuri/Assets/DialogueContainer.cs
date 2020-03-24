@@ -25,7 +25,9 @@ public class DialogueContainer : MonoBehaviour
     public void ResetCardSequence() {
         if(dialogueCardQueue != null) dialogueCardQueue.Clear();
         var cards = DialogueCardRetriever.GetDialogueCardsBySequenceId(DialogueFile, SequenceId);
-        foreach (var card in cards) dialogueCardQueue.Enqueue(card);
+        foreach (var card in cards) 
+            if(card.DialogueText != null) 
+                dialogueCardQueue.Enqueue(card);
     }
 
     void Start() {

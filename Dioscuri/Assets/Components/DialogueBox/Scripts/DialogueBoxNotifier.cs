@@ -20,24 +20,6 @@ public static class DialogueBoxNotifier
     }
 
     /// <summary>
-    /// Print provided DialogueCards to the screen
-    /// </summary>
-    /// <param name="dialogueCards"></param>
-    public static void PrintDialogueSequence(DialogueCard[] dialogueCards) {
-        foreach(var card in dialogueCards)
-            OnConfirmNextDialogue?.Invoke(card);
-    }
-
-    /// <summary>
-    /// Print provided DialogueCards to the screen
-    /// </summary>
-    /// <param name="dialogueCards"></param>
-    public static void PrintDialogueGraph(Queue<DialogueCard> dialogueCards) {
-        foreach (var card in dialogueCards)
-            OnConfirmNextDialogue?.Invoke(card);
-    }
-
-    /// <summary>
     /// Closes the DialogueBox UI display
     /// </summary>
     public static void CloseDialogueBox() {
