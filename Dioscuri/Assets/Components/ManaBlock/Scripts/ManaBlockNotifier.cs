@@ -1,12 +1,13 @@
 ﻿
 
+using Assets.Enums;
 using System;
 
 public static class ManaBlockGridNotifier
 { 
     public static Action<ManaBlock> OnOpenManaBlockGrid { get; set; }
     public static Action OnCloseManaBlockGrid { get; set; }
-    public static Action<ManaBlock> OnShowManaBlock { get; set; }
+    public static Action<ManaBlock, bool> OnShowManaBlock { get; set; }
     public static Action<Direction> OnMoveManaBlock { get; set; }
     public static Action OnPlaceManaBlock { get; set; }
 
@@ -34,8 +35,8 @@ public static class ManaBlockGridNotifier
     /// <summary>
     /// Displays the provided ManaBlock within the bounds of the current ManaBlock grid on the UI
     /// </summary>
-    public static void ShowManaBlock(ManaBlock manaBlocktoDisplay) {
-        OnShowManaBlock?.Invoke(manaBlocktoDisplay);
+    public static void ShowManaBlock(ManaBlock manaBlocktoDisplay, bool isSpell = true) {
+        OnShowManaBlock?.Invoke(manaBlocktoDisplay, isSpell);
     }
 
     /// <summary>

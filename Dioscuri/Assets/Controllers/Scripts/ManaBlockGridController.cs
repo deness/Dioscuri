@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Enums;
+using UnityEngine;
 
 public class ManaBlockGridController : ControllerBase
 {
@@ -9,6 +10,15 @@ public class ManaBlockGridController : ControllerBase
 
         if (Input.GetKeyDown(KeyCode.Space))
             CloseManaBlockGrid();
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            MoveManaBlock(Direction.East);
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            MoveManaBlock(Direction.West);
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            MoveManaBlock(Direction.North);
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            MoveManaBlock(Direction.South);
     }
 
     private void CloseManaBlockGrid() {
@@ -18,13 +28,26 @@ public class ManaBlockGridController : ControllerBase
         DeactivateThis();
     }
 
+    private void MoveManaBlock(Direction direction) {
+        ManaBlockGridNotifier.MoveManaBlock(direction);
+    }
+
     /// <summary>
     /// Opens the DialogueBox and plays out the provided DialogueItem
     /// </summary>
     /// <param name="dialogueItem"></param>
     public void OpenManaBlockGrid(ManaBlock manaBlock) {
-        DeactivateController<PlayerController>();
         ManaBlockGridNotifier.OpenManaBlockGrid(manaBlock);
         UIDisplayOpen = true;
     }
+
+    /// <summary>
+    /// Opens the DialogueBox and plays out the provided DialogueItem
+    /// </summary>
+    /// <param name="dialogueItem"></param>
+    public void ShowManaBlockSpell(ManaBlock manaBlock)
+    {
+        ManaBlockGridNotifier.ShowManaBlock(manaBlock);
+    }
+
 }
