@@ -1,24 +1,16 @@
 ﻿using Assets.Components.DialogueBox.Scripts;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 // This goes on same component as PlayerController
-public class DialogueController : MonoBehaviour
+public class DialogueController : ControllerBase
 {
-    private bool _uiDisplayOpen = false;
-    private IDialogueItem _dialogueItem;
+    private DialogueContainer _dialogueItem;
 
     #region Control Methods
     // Update is called once per frame
     void Update()
     {
-        // would live in PlayerController
-        if (!_uiDisplayOpen && Input.GetKeyDown(KeyCode.D)) {
-            _dialogueItem = GetComponent<IDialogueItem>();
-            OpenDialoguBox(_dialogueItem);
-        }
-
-        //if (!_uiDisplayOpen) return;
+        if (!UIDisplayOpen) return;
 
         if (Input.GetKeyDown(KeyCode.Return) && !DialogueWriter.IsTyping)
             NextDialogue();
@@ -32,22 +24,22 @@ public class DialogueController : MonoBehaviour
     }
 
     private void CloseDialogueBox() {
-        _uiDisplayOpen = false;
+        UIDisplayOpen = false;
         DialogueBoxNotifier.CloseDialogueBox();
-        // enable playerController
-        enabled = false;
+        ActivateController<PlayerController>();
+        DeactivateThis();
     }
-
     #endregion
 
     /// <summary>
     /// Opens the DialogueBox and plays out the provided DialogueItem
     /// </summary>
     /// <param name="dialogueItem"></param>
-    public void OpenDialoguBox(IDialogueItem dialogueItem) {
+    public void OpenDialoguBox(DialogueContainer dialogueItem) {
+        DeactivateController<PlayerController>();
         _dialogueItem = dialogueItem;
         DialogueBoxNotifier.OpenDialoguBox();
-        _uiDisplayOpen = true;
+        UIDisplayOpen = true;
+        NextDialogue();
     }
 }
-
